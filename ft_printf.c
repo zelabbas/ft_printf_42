@@ -36,22 +36,13 @@ static int	help_printf(va_list lst_arg, char c)
 	return (0);
 }
 
-static int	check_file(int len)
-{
-	if (write(1, "", 0) == -1)
-	{
-		return (-1);
-	}
-	return (len);
-}
-
 int	ft_printf(const char *format, ...)
 {
 	int		len;
 	int		i;
 	va_list	args;
 
-	if (!format)
+	if (!format || write(1, "", 0) == -1)
 		return (-1);
 	va_start(args, format);
 	len = 0;
@@ -68,5 +59,5 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(args);
-	return (check_file(len));
+	return (len);
 }
