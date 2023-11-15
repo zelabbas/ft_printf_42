@@ -33,6 +33,8 @@ static int	help_printf(va_list lst_arg, char c)
 		return (prt_adrr(va_arg(lst_arg, void *)));
 	else if (c == 'u')
 		return (prt_unsigned(va_arg(lst_arg, unsigned int)));
+	else
+		return (write(1, &c, 1));
 	return (0);
 }
 
